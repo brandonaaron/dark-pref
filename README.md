@@ -18,9 +18,9 @@ Add this to the `<head>`:
 
 ```html
 <!-- tiny render blocking script to avoid flash of content -->
-<script src="path/to/dist/DarkPref.blocking.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@brandonaaron/dark-pref@1.0.0/dist/DarkPref.blocking.js"></script>
 <!-- rest of the exports could be bundled with your favorite bundler too -->
-<script src="path/to/dist/DarkPrefToggleElement.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/@brandonaaron/dark-pref@1.0.0/dist/DarkPrefToggleElement.js" type="module"></script>
 <style>
   :root { /* optional css variables */
     --dark-pref-when-light-color: #999; /* defaults to #000 */
