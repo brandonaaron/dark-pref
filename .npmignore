@@ -1,0 +1,7 @@
+docs/
+examples/
+.editorconfig
+index.html
+rollup.config.js
+test.html
+test.js

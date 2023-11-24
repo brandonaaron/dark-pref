@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../dist/DarkPref.blocking.js"></script>
+    <style>
+      html { background-color: #fff; color: #000; }
+      html.dark { background-color: #000; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <button title="Toggles light & dark mode" aria-label="auto" aria-live="polite" id="toggle">Auto</button>
+    <script type="module">
+      import { DarkPref } from '../dist/DarkPref.js'
+
+      const button = document.querySelector('#toggle')
+      button.addEventListener('click', () => { DarkPref.toggle() })
+      const syncButton = () => {
+        const ariaLabel = `${DarkPref.current.user === null ? 'auto ' : ''}${DarkPref.current.isDark ? 'dark' : 'light'}`
+        const ariaPressed = DarkPref.current.user === null ? 'false' : 'true'
+        button.setAttribute('aria-label', ariaLabel)
+        button.setAttribute('aria-pressed', ariaPressed)
+        button.innerHTML = `${DarkPref.current.isDark ? 'Dark' : 'Light'} Mode`
+      }
+      document.addEventListener('darkpref:sync', syncButton)
+      syncButton()
+    </script>
+  </body>
+</html>

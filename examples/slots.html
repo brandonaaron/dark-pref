@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../dist/DarkPref.blocking.js"></script>
+    <script type="module" src="../dist/DarkPrefToggleElement.js"></script>
+    <style>
+      :root {
+        --dark-pref-when-light-color: green;
+        --dark-pref-when-dark-color: yellow;
+      }
+
+      html { background-color: #fff; color: #000; }
+      html.dark { background-color: #000; color: #fff; }
+
+      /* Could have also defined the colors here instead of via the css variables */
+      span[slot=light],
+      span[slot=dark] { font-size: 2rem; font-weight: bold; line-height: 2.2rem; }
+    </style>
+  </head>
+  <body>
+    <dark-pref-toggle>
+      <span slot="light">Light Mode</span>
+      <span slot="dark">Dark Mode</span>
+    </dark-pref-toggle>
+  </body>
+</html>

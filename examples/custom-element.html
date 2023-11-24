@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../dist/DarkPref.blocking.js"></script>
+    <script type="module">
+      import { DarkPref } from '../dist/DarkPref.js'
+      import { DarkPrefToggleBaseElement } from '../dist/DarkPrefToggleBaseElement.js'
+
+      const template = document.createElement('template')
+      template.innerHTML = `
+        <style>
+          button {
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: #000;
+          }
+          button.dark { color: #fff; }
+        </style>
+        <button title='Toggle light/dark mode' aria-label='auto' aria-live='polite'>Auto</button>
+      `
+      class CustomDarkPrefToggle extends DarkPrefToggleBaseElement {
+        #button
+
+        connectedCallback () {
+          super.connectedCallback()
+          const shadowRoot = this.attachShadow({ mode: 'open' })
+          shadowRoot.appendChild(template.content.cloneNode(true))
+
+          this.#button = shadowRoot.querySelector('button')
+
+          this.sync()
+        }
+
+        sync () {
+          this.#button.classList.toggle('dark', DarkPref.current.isDark)
+          this.#button?.setAttribute('aria-pressed', this.ariaPressedForCurrentState)
+          this.#button?.setAttribute('aria-label', this.ariaLabelForCurrentState)
+          this.#button.innerHTML = `${DarkPref.current.isDark ? 'Dark' : 'Light'} Mode`
+        }
+      }
+      customElements.define('custom-dark-pref-toggle', CustomDarkPrefToggle)
+    </script>
+    <style>
+      html { background-color: #fff; color: #000; }
+      html.dark { background-color: #000; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <custom-dark-pref-toggle></custom-dark-pref-toggle>
+  </body>
+</html>
