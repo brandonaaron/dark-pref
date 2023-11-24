@@ -1,3 +1,4 @@
+.github
 docs/
 examples/
 .editorconfig
@@ -6,3 +7,4 @@ index.html
 rollup.config.js
 test.html
 test.js
+web-test-runner.config.js
