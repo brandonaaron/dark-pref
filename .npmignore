@@ -1,6 +1,7 @@
 docs/
 examples/
 .editorconfig
+focusPlugin.js
 index.html
 rollup.config.js
 test.html
