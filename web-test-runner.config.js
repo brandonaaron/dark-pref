@@ -4,8 +4,6 @@ import { esbuildPlugin } from '@web/dev-server-esbuild'
 import { playwrightLauncher } from '@web/test-runner-playwright'
 import { defaultReporter, summaryReporter } from '@web/test-runner'
 
-import { focusPlugin } from './focusPlugin.js'
-
 const port = 8889
 
 // Setup `browsers` config so we test all permutations of product * colorScheme * stored user preference
@@ -54,7 +52,7 @@ export default {
     // use typescript esbuild loader for all js and ts files
     loaders: { '.js': 'ts', '.ts': 'ts' },
     tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url))
-  }), focusPlugin()],
+  })],
   port,
   reporters: [defaultReporter(), summaryReporter()],
   testRunnerHtml: (testFramework) => `

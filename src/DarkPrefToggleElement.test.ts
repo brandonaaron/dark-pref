@@ -2,7 +2,7 @@
 import { assert } from 'chai'
 import { DarkPref, DarkPrefUserSetting } from './DarkPref.js'
 import { DarkPrefToggleElement } from './DarkPrefToggleElement.js'
-import { sendMouse, resetMouse, sendKeys, executeServerCommand } from '@web/test-runner-commands'
+import { sendMouse, resetMouse, sendKeys } from '@web/test-runner-commands'
 
 const darkModeQuery = matchMedia('(prefers-color-scheme: dark)')
 const testDarkMode = darkModeQuery.matches
@@ -63,9 +63,14 @@ describe(`DarkPrefToggleElement (system: ${testDarkMode ? 'dark' : 'light'}, use
   })
 
   it('toggles DarkPref when focused and enter key is pressed', async function () {
-    await executeServerCommand('focus', '#default button')
+    const darkPrefToggle = document.getElementById('default') as DarkPrefToggleElement | null
+    const button = darkPrefToggle?.shadowRoot?.querySelector('button') as HTMLButtonElement | null
+    if (!button) { throw new Error('no button') }
+    button.focus()
     assert.strictEqual(DarkPref.current.isDark, (testUserPref ?? testDarkMode), 'initial dark pref matches user/system')
     await sendKeys({ press: 'Enter' })
-    assert.strictEqual(DarkPref.current.isDark, !(testUserPref ?? testDarkMode), 'dark pref was toggled')
+    assert.strictEqual(!DarkPref.current.isDark, (testUserPref ?? testDarkMode), 'dark pref was toggled')
+    await sendKeys({ press: 'Enter' })
+    assert.strictEqual(DarkPref.current.isDark, (testUserPref ?? testDarkMode), 'dark pref was toggled again')
   })
 })
