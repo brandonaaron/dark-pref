@@ -120,7 +120,7 @@ npm install @brandonaaron/dark-pref
 I copied over `dist/DarkPref.blocking.js` to the `public` directory and included that via an `is:inline` script tag in the `<head>` of my main layout:
 
 ```html
-<script is:inline src="/DarkPref.bundled.nomodule.min.js"></script>
+<script is:inline src="/DarkPref.blocking.js"></script>
 ```
 
 Then I created a `DarkPrefToggle.astro` component with the following:
