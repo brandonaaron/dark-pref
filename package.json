@@ -4,13 +4,18 @@
   "description": "Dark mode preference manager and optional web components.",
   "author": "Brandon Aaron",
   "license": "ISC",
-  "repository": { "type": "git", "url": "https://github.com/brandonaaron/dark-pref.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandonaaron/dark-pref.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.js",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:fix:staged": "npx lint-staged --verbose",
     "start": "run-p dev:*",
     "test": "wtr src/*.test.ts",
     "build": "run-s build:*",
@@ -19,13 +24,14 @@
     "build:cem": "cem analyze --outdir dist --globs \"src/DarkPrefToggl*.ts\"",
     "dev:serve": "wds --port 8888",
     "dev:build": "rollup --watch -c rollup.config.js",
-    "prepare": "npm run build"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.9.0",
-    "@rollup/plugin-eslint": "^9.0.5",
+    "@eslint/js": "^8.55.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@stylistic/eslint-plugin": "^1.5.1",
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -38,10 +44,15 @@
     "chai": "npm:@esm-bundle/chai@^4.3.4-fix.0",
     "eslint": "^8.53.0",
     "happy-dom": "^12.10.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^5.0.5",
     "rollup": "^4.4.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
+  },
+  "lint-staged": {
+    "*.{ts,js}": "eslint . --fix"
   }
 }

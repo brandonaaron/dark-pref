@@ -1,4 +1,3 @@
-/* eslint-env mocha */
 import { assert } from 'chai'
 import { DarkPref, DarkPrefUserSetting } from './DarkPref.js'
 import { DarkPrefToggleElement } from './DarkPrefToggleElement.js'

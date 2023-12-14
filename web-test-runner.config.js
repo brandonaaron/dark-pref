@@ -25,12 +25,12 @@ products.forEach((product) => {
                 origin: `http://localhost:${port}`,
                 localStorage: [
                   { name: '__dark-pref__', value },
-                  { name: 'initialDarkPrefValue', value } // used for test reporting
-                ]
-              }]
-            }
+                  { name: 'initialDarkPrefValue', value }, // used for test reporting
+                ],
+              }],
+            },
           })
-        }
+        },
       }))
     })
   })
@@ -51,11 +51,11 @@ export default {
   plugins: [esbuildPlugin({
     // use typescript esbuild loader for all js and ts files
     loaders: { '.js': 'ts', '.ts': 'ts' },
-    tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url))
+    tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
   })],
   port,
   reporters: [defaultReporter(), summaryReporter()],
-  testRunnerHtml: (testFramework) => `
+  testRunnerHtml: testFramework => `
     <!doctype html>
     <html>
       <head>
@@ -72,5 +72,5 @@ export default {
         <script type="module" src="${testFramework}"></script>
       </body>
     </html>
-  `
+  `,
 }

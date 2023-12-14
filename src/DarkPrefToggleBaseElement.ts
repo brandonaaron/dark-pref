@@ -11,45 +11,45 @@ export class DarkPrefToggleBaseElement extends HTMLElement {
   #darkPrefSyncHandler: EventListener | undefined
   #clickHandler: EventListener | undefined
 
-  connectedCallback () {
+  connectedCallback() {
     this.addListenerForDarkPrefSync()
     this.addListenerForClick()
   }
 
-  disconnectedCallback () {
+  disconnectedCallback() {
     this.removeListenerForDarkPrefSync()
     this.removeListenerForClick()
   }
 
-  sync () {
+  sync() {
     throw new Error('sync is not implemented')
   }
 
-  toggle (forceDarkPref?: DarkPrefUserSetting) {
+  toggle(forceDarkPref?: DarkPrefUserSetting) {
     DarkPref.toggle(forceDarkPref)
   }
 
-  addListenerForClick () {
+  addListenerForClick() {
     if (!this.#clickHandler) {
       this.#clickHandler = () => { this.toggle() }
     }
     this.addEventListener('click', this.#clickHandler)
   }
 
-  removeListenerForClick () {
+  removeListenerForClick() {
     if (this.#clickHandler) {
       this.removeEventListener('click', this.#clickHandler)
     }
   }
 
-  addListenerForDarkPrefSync () {
+  addListenerForDarkPrefSync() {
     if (!this.#darkPrefSyncHandler) {
       this.#darkPrefSyncHandler = () => { this.sync() }
     }
     document.addEventListener('darkpref:sync', this.#darkPrefSyncHandler)
   }
 
-  removeListenerForDarkPrefSync () {
+  removeListenerForDarkPrefSync() {
     if (this.#darkPrefSyncHandler) {
       document.addEventListener('darkpref:sync', this.#darkPrefSyncHandler)
     }
@@ -58,14 +58,14 @@ export class DarkPrefToggleBaseElement extends HTMLElement {
   /**
    * The buttons is considered pressed if the user preference is not `null`.
    */
-  get ariaPressedForCurrentState () {
+  get ariaPressedForCurrentState() {
     return DarkPref.current.user === null ? 'false' : 'true'
   }
 
   /**
    * Includes the prefix "auto" unless the user has a preference set.
    */
-  get ariaLabelForCurrentState () {
+  get ariaLabelForCurrentState() {
     const { isDark, user } = DarkPref.current
     return `${user === null ? 'auto ' : ''}${isDark ? 'dark' : 'light'}`
   }
