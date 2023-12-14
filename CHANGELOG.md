@@ -8,6 +8,7 @@
 - chore: Drop custom focus plugin in unit tests
 - chore: Use jsdeliver cdn in examples
 - chore: Fix example in README.md
+- chore: Migrate from .nvmrc to .node-version
 
 ## [1.0.0] - 2023-10-20
 
