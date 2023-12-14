@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- chore: Add Docker and devcontainer config
 - chore: Update dependencies
 - chore: Move to eslint flat config and stylistic package
 - chore: Implement list-staged and husky for pre-commit linting

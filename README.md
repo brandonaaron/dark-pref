@@ -152,3 +152,11 @@ module.exports = {
   //...
 }
 ```
+
+## Docker
+
+Run `docker compose up` to get a working dev environment. This will start a dev server on port 8888.
+
+Run `docker compose run --build dev npm run test` to just run the unit tests in isolation.
+
+There is a config for a vscode devcontainer too. The devcontainer uses the same Dockerfile/docker-compose config but does not start a dev server. Instead open a terminal within vscode and run `npm start` (or `npm run test`, etc).
