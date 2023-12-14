@@ -6,7 +6,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/brandonaaron/dark-pref.git"
+    "url": "git+https://github.com/brandonaaron/dark-pref.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
