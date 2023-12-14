@@ -24,6 +24,7 @@
     "build:cem": "cem analyze --outdir dist --globs \"src/DarkPrefToggl*.ts\"",
     "dev:serve": "wds --port 8888",
     "dev:build": "rollup --watch -c rollup.config.js",
+    "prepublishOnly": "npm run build",
     "prepare": "husky install"
   },
   "devDependencies": {
