@@ -39,7 +39,7 @@ template.innerHTML = `
 export class DarkPrefToggleElement extends DarkPrefToggleBaseElement {
   #button: HTMLButtonElement | null | undefined
 
-  connectedCallback () {
+  connectedCallback() {
     super.connectedCallback()
     const shadowRoot = this.attachShadow({ mode: 'open' })
     shadowRoot.appendChild(template.content.cloneNode(true))
@@ -52,7 +52,7 @@ export class DarkPrefToggleElement extends DarkPrefToggleBaseElement {
   /**
    * Syncs up with the `DarkPref.currentState`
    */
-  sync () {
+  sync() {
     this.#button?.classList.toggle('dark', DarkPref.current.isDark)
     this.#button?.setAttribute('aria-pressed', this.ariaPressedForCurrentState)
     this.#button?.setAttribute('aria-label', this.ariaLabelForCurrentState)

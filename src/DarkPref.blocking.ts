@@ -1,7 +1,6 @@
-/* eslint-env browser */
 // Minimal script for toggling the 'dark' class on the html element
 
-import { DarkPrefUserSetting } from "./DarkPref"
+import { DarkPrefUserSetting } from './DarkPref'
 
 const key = '__dark-pref__'
 const system = matchMedia('(prefers-color-scheme: dark)').matches

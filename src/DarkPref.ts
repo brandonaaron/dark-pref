@@ -32,7 +32,7 @@ const DarkPref = {
    * Used to sync up the current state with the system and user preferences.
    * Always emits a `darkpref:sync` event on the `document`.
    */
-  sync () {
+  sync() {
     system = mediaQuery.matches
     isDark = user ?? system
     document.dispatchEvent(new CustomEvent<DarkPrefCurrentState>('darkpref:sync', { detail: { user, system, isDark } }))
@@ -45,7 +45,7 @@ const DarkPref = {
    * When the user preference is aligned with the system preference,
    * the user preference is set to `null`.
    */
-  toggle (pref?: DarkPrefUserSetting) {
+  toggle(pref?: DarkPrefUserSetting) {
     user = typeof pref === 'undefined'
       ? (system ? (isDark ? false : null) : (isDark ? null : true))
       : pref
@@ -58,7 +58,7 @@ const DarkPref = {
   /**
    * Clears out any user preference and syncs.
    */
-  reset () {
+  reset() {
     user = null
     try { localStorage.removeItem(key) } catch {} // eslint-disable-line no-empty
     DarkPref.sync()
@@ -69,7 +69,7 @@ const DarkPref = {
    * If `user` is `null` then there is no user preference (or the user
    * preference is aligned with the system preference).
    */
-  get current () { return { user, system, isDark } }
+  get current() { return { user, system, isDark } },
 }
 
 // Keep multiple tabs/windows in sync via the localStorage `storage` event.

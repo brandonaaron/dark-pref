@@ -34,7 +34,7 @@ describe(`DarkPref (system: ${testDarkMode ? 'dark' : 'light'}, user: ${initialU
   })
 
   it('triggers the darkpref:sync event', function (done) {
-    const handleSync = function ({ detail: current }:CustomEvent<DarkPrefCurrentState>) {
+    const handleSync = function ({ detail: current }: CustomEvent<DarkPrefCurrentState>) {
       assert.strictEqual(!testDarkMode, current.isDark, 'it has the correct isDark value')
       document.removeEventListener('darkpref:sync', handleSync)
       done()
