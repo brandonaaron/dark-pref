@@ -9,6 +9,8 @@
 - chore: Use jsdeliver cdn in examples
 - chore: Fix example in README.md
 - chore: Migrate from .nvmrc to .node-version
+- chore: Update repo url in package.json
+- chore: Move npm run build to prepublishOnly
 
 ## [1.0.0] - 2023-10-20
 
