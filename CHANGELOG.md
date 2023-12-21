@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- chore: Fix publint.dev warnings and error
 - chore: Add Docker and devcontainer config
 - chore: Update dependencies
 - chore: Move to eslint flat config and stylistic package
