@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [1.0.1] - 2023-12-20
 
 - chore: Fix publint.dev warnings and error
 - chore: Add Docker and devcontainer config
